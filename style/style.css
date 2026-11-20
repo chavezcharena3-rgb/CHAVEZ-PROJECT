@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: #fbf8f1;
+    color: #172139;
+    font-family: "Archivo", "Segoe UI", sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+p,
+address {
+    margin: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+address {
+    font-style: normal;
+}
+
+::selection {
+    background: #c6a04f;
+    color: #0c244c;
+}
+
+:focus-visible {
+    outline: 2px solid #13356a;
+    outline-offset: 3px;
+}
+
+.shell {
+    width: 100%;
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.skip-link {
+    position: absolute;
+    top: -5rem;
+    left: clamp(1.25rem, 4vw, 3rem);
+    z-index: 5;
+    padding: 0.7rem 1.1rem;
+    background: #fbf6ea;
+    color: #13356a;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0.75rem;
+}
+
+.site-header {
+    background: #0a1f41;
+}
+
+.site-header :focus-visible {
+    outline-color: #fbf6ea;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+    min-height: 4rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-block: 0.5rem;
+    color: #fbf6ea;
+    text-decoration: none;
+}
+
+.brand img {
+    flex: none;
+    width: 46px;
+    height: 46px;
+}
+
+.brand-name {
+    font-size: 1rem;
+    font-weight: 620;
+    letter-spacing: 0.005em;
+    line-height: 1.25;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem 1.35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding-inline: 0.15rem;
+    color: #fbf6ea;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    text-decoration: none;
+    transition: color 180ms ease;
+}
+
+.nav-links a:hover {
+    color: #e2c783;
+    text-decoration: underline;
+    text-decoration-color: #c6a04f;
+    text-underline-offset: 0.36em;
+}
+
+.nav-links .nav-apply {
+    color: #e8cd8a;
+}
+
+.hero {
+    display: flex;
+    min-height: calc(100vh - 4rem);
+    min-height: calc(100svh - 4rem);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7, 17, 38, 0.5) 0%,
+            rgba(7, 17, 38, 0.14) 14%,
+            rgba(7, 17, 38, 0) 26%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(7, 17, 38, 0.55) 0%,
+            rgba(7, 17, 38, 0.2) 20%,
+            rgba(7, 17, 38, 0) 36%
+        ),
+        linear-gradient(
+            96deg,
+            rgba(7, 17, 38, 0.94) 0%,
+            rgba(7, 17, 38, 0.9) 40%,
+            rgba(7, 17, 38, 0.72) 58%,
+            rgba(7, 17, 38, 0.2) 100%
+        ),
+        url("../assets/KCC-IMAGE.jpg") center 42% / cover no-repeat #0d2750;
+    color: #fbf6ea;
+}
+
+.hero :focus-visible {
+    outline-color: #fffdf7;
+}
+
+.hero-inner {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-block: clamp(1.5rem, 3vw, 2.25rem)
+        clamp(2.75rem, 6vw, 4.25rem);
+}
+
+.hero-copy {
+    max-width: 44rem;
+    margin-top: auto;
+    padding-top: clamp(3rem, 8vw, 5rem);
+}
+
+.hero h1 {
+    color: #fffdf7;
+    font-size: clamp(2.5rem, 6vw, 5.25rem);
+    font-weight: 620;
+    letter-spacing: -0.032em;
+    line-height: 1.04;
+    text-wrap: balance;
+}
+
+.hero-lede {
+    max-width: 44ch;
+    margin-top: 1.3rem;
+    color: rgba(251, 246, 234, 0.9);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    line-height: 1.65;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-top: 2.1rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.25rem;
+    padding: 0.9rem 1.6rem;
+    border: 1px solid #c6a04f;
+    border-radius: 2px;
+    background: #c6a04f;
+    color: #102a52;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background-color 180ms ease,
+        border-color 180ms ease;
+}
+
+.button:hover {
+    background: #d8b76e;
+    border-color: #d8b76e;
+}
+
+.enrollment {
+    padding-left: 0.9rem;
+    border-left: 2px solid #c6a04f;
+    color: rgba(251, 246, 234, 0.85);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Footer --------------- */
+
+.site-footer {
+    background: #fbf8f1;
+    padding-block: clamp(2.25rem, 4vw, 3rem);
+    font-size: 0.95rem;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 1.75rem 3rem;
+}
+
+.footer-name {
+    margin-bottom: 0.4rem;
+    color: #13356a;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.footer-address address {
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.6rem;
+    justify-self: end;
+}
+
+.footer-links a {
+    padding-block: 0.2rem;
+    color: #13356a;
+    font-size: 0.95rem;
+    text-decoration-color: #c6a04f;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.24em;
+}
+
+.footer-links a:hover {
+    color: #8a641c;
+}
+
+.footer-fine {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.35rem 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(19, 53, 106, 0.16);
+    color: #5c6474;
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    .hero {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(7, 17, 38, 0.5) 0%,
+                rgba(7, 17, 38, 0.15) 16%,
+                rgba(7, 17, 38, 0) 30%
+            ),
+            linear-gradient(
+                0deg,
+                rgba(7, 17, 38, 0.96) 0%,
+                rgba(7, 17, 38, 0.9) 32%,
+                rgba(7, 17, 38, 0.74) 52%,
+                rgba(7, 17, 38, 0.2) 100%
+            ),
+            url("../assets/KCC-IMAGE.jpg") 62% 38% / cover no-repeat #0d2750;
+    }
+
+    .hero-inner {
+        padding-block: 1.4rem 2.75rem;
+    }
+
+    .brand img {
+        width: 44px;
+        height: 44px;
+    }
+
+    .brand-name {
+        font-size: 0.95rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.4rem, 9.5vw, 3.5rem);
+    }
+
+    .hero-actions {
+        margin-top: 1.8rem;
+    }
+}
+
+@media (max-width: 760px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+        align-items: flex-start;
+        justify-self: start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    /* Two rows, brand above the links: no hamburger, no script. */
+
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        gap: 0.25rem;
+        min-height: 7rem;
+    }
+
+    .nav-links {
+        gap: 0 1.35rem;
+    }
+
+    .hero {
+        min-height: calc(100vh - 7rem);
+        min-height: calc(100svh - 7rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-name {
+        font-size: 0.9rem;
+    }
+
+    .hero-copy {
+        padding-top: 2.75rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.2rem, 10vw, 3rem);
+    }
+
+    .footer-fine {
+        display: block;
+    }
+
+    .footer-fine p + p {
+        margin-top: 0.35rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .button,
+    .nav-links a {
+        transition: none;
+    }
+}
