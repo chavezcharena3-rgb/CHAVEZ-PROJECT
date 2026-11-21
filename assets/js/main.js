@@ -1,150 +1,164 @@
-/**
-* Template Name: Mentor
-* Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-* Updated: Jul 07 2025 with Bootstrap v5.3.7
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
-(function() {
+/**
+ * KCC Website - Main JavaScript
+ * Based on the Bootstrap Mentor template.
+ * Includes navigation, scroll effects, and smooth animations.
+ */
+
+(function () {
   "use strict";
 
-  /**
-   * Apply .scrolled class to the body as the page is scrolled down
-   */
+  // Header scroll effect
   function toggleScrolled() {
-    const selectBody = document.querySelector('body');
-    const selectHeader = document.querySelector('#header');
-    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
-    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
+    const body = document.body;
+    const header = document.querySelector("#header");
+
+    if (!header) return;
+
+    if (
+      header.classList.contains("scroll-up-sticky") ||
+      header.classList.contains("sticky-top") ||
+      header.classList.contains("fixed-top")
+    ) {
+      body.classList.toggle("scrolled", window.scrollY > 100);
+    }
   }
 
-  document.addEventListener('scroll', toggleScrolled);
-  window.addEventListener('load', toggleScrolled);
+  window.addEventListener("scroll", toggleScrolled, { passive: true });
+  window.addEventListener("load", toggleScrolled);
 
-  /**
-   * Mobile nav toggle
-   */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  // Mobile navigation
+  const mobileNavToggleBtn = document.querySelector(".mobile-nav-toggle");
 
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
+  function toggleMobileNav() {
+    if (!mobileNavToggleBtn) return;
+
+    document.body.classList.toggle("mobile-nav-active");
+    mobileNavToggleBtn.classList.toggle("bi-list");
+    mobileNavToggleBtn.classList.toggle("bi-x");
   }
+
   if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+    mobileNavToggleBtn.addEventListener("click", toggleMobileNav);
   }
 
-  /**
-   * Hide mobile nav on same-page/hash links
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
+  // Close mobile navigation after selecting a section
+  document.querySelectorAll("#navmenu a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      if (document.body.classList.contains("mobile-nav-active")) {
+        toggleMobileNav();
       }
     });
-
   });
 
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
+  // Mobile dropdowns
+  document.querySelectorAll(".navmenu .toggle-dropdown").forEach(function (item) {
+    item.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const parent = this.parentNode;
+      const submenu = parent.nextElementSibling;
+
+      parent.classList.toggle("active");
+
+      if (submenu) {
+        submenu.classList.toggle("dropdown-active");
+      }
+
+      event.stopPropagation();
     });
   });
 
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
+  // Preloader
+  const preloader = document.querySelector("#preloader");
+
   if (preloader) {
-    window.addEventListener('load', () => {
+    window.addEventListener("load", function () {
       preloader.remove();
     });
   }
 
-  /**
-   * Scroll top button
-   */
-  let scrollTop = document.querySelector('.scroll-top');
+  // Scroll-to-top button
+  const scrollTop = document.querySelector(".scroll-top");
 
   function toggleScrollTop() {
     if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+      scrollTop.classList.toggle("active", window.scrollY > 100);
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
 
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
+  if (scrollTop) {
+    scrollTop.addEventListener("click", function (event) {
+      event.preventDefault();
 
-  /**
-   * Animation on scroll function and init
-   */
-  function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     });
   }
-  window.addEventListener('load', aosInit);
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  window.addEventListener("load", toggleScrollTop);
+  window.addEventListener("scroll", toggleScrollTop, { passive: true });
 
-  /**
-   * Initiate Pure Counter
-   */
-  new PureCounter();
+  // Animate sections when they enter the screen
+  function aosInit() {
+    if (typeof AOS === "undefined") return;
 
-  /**
-   * Init swiper sliders
-   */
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    AOS.init({
+      duration: 750,
+      easing: "ease-out-cubic",
+      once: true,
+      mirror: false,
+      offset: 75,
+      disable: reduceMotion
+    });
+  }
+
+  window.addEventListener("load", aosInit);
+
+  // GLightbox
+  if (typeof GLightbox !== "undefined") {
+    GLightbox({
+      selector: ".glightbox"
+    });
+  }
+
+  // Pure Counter
+  if (typeof PureCounter !== "undefined") {
+    new PureCounter();
+  }
+
+  // Swiper sliders
   function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
+    if (typeof Swiper === "undefined") return;
 
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
+    document.querySelectorAll(".init-swiper").forEach(function (element) {
+      const configElement = element.querySelector(".swiper-config");
+
+      if (!configElement) return;
+
+      try {
+        const config = JSON.parse(configElement.innerHTML.trim());
+
+        if (
+          element.classList.contains("swiper-tab") &&
+          typeof initSwiperWithCustomPagination === "function"
+        ) {
+          initSwiperWithCustomPagination(element, config);
+        } else {
+          new Swiper(element, config);
+        }
+      } catch (error) {
+        console.error("Unable to initialize Swiper:", error);
       }
     });
   }
 
   window.addEventListener("load", initSwiper);
-
-  /**
-   * Forms: no backend on GitHub Pages, so stop the POST and show the thank-you message.
-   * shortcut: nothing is actually sent; point the form action at a form service (e.g. Formspree) when real delivery is needed
-   */
-  document.querySelectorAll('.email-form').forEach(function(form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      form.querySelector('.sent-message').classList.add('d-block');
-      form.reset();
-    });
-  });
 
 })();
