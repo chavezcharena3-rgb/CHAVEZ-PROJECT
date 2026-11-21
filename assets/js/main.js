@@ -33,9 +33,12 @@
   function toggleMobileNav() {
     if (!mobileNavToggleBtn) return;
 
-    document.body.classList.toggle("mobile-nav-active");
-    mobileNavToggleBtn.classList.toggle("bi-list");
-    mobileNavToggleBtn.classList.toggle("bi-x");
+    const isOpen = document.body.classList.toggle("mobile-nav-active");
+
+    mobileNavToggleBtn.classList.toggle("bi-list", !isOpen);
+    mobileNavToggleBtn.classList.toggle("bi-x", isOpen);
+
+    mobileNavToggleBtn.setAttribute("aria-expanded", String(isOpen));
   }
 
   if (mobileNavToggleBtn) {
