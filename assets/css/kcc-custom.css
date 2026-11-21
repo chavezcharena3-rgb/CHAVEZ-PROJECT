@@ -1566,3 +1566,35 @@ body.scrolled .header {
     animation: none !important;
   }
 }
+/* KCC HERO BUTTONS */
+.kcc-hero-bottom .hero-actions .btn {
+  padding: 13px 26px;
+  border-radius: 6px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.kcc-hero-bottom .btn-gold {
+  background: var(--kcc-gold);
+  color: var(--kcc-midnight);
+  border: 1px solid var(--kcc-gold);
+}
+
+.kcc-hero-bottom .btn-gold:hover {
+  background: transparent;
+  color: var(--kcc-gold);
+  transform: translateY(-3px);
+}
+
+.kcc-hero-bottom .btn-outline-light {
+  background: transparent;
+  color: var(--kcc-cream);
+  border: 1px solid var(--kcc-cream);
+}
+
+.kcc-hero-bottom .btn-outline-light:hover {
+  background: var(--kcc-gold);
+  color: var(--kcc-midnight);
+  border-color: var(--kcc-gold);
+  transform: translateY(-3px);
+}
