@@ -1566,11 +1566,66 @@ body.scrolled .header {
     animation: none !important;
   }
 }
-/* KCC HERO BUTTONS */
+/* =========================================
+   KCC ORIGINAL HERO DESIGN
+========================================= */
+
+.kcc-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(212, 175, 55, 0.10),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #080d18 0%, #101c32 65%, #080d18 100%);
+}
+
+.kcc-hero-inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 110px;
+  padding-bottom: 70px;
+}
+
+.kcc-hero-artwork {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  background: rgba(255, 255, 255, 0.025);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+}
+
+.kcc-hero-artwork img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.kcc-hero-bottom {
+  margin-top: 38px;
+  text-align: center;
+}
+
+.kcc-hero-bottom .hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 .kcc-hero-bottom .hero-actions .btn {
-  padding: 13px 26px;
-  border-radius: 6px;
+  padding: 14px 30px;
+  border-radius: 3px;
   font-weight: 700;
+  letter-spacing: 0.4px;
   transition: all 0.3s ease;
 }
 
@@ -1589,12 +1644,64 @@ body.scrolled .header {
 .kcc-hero-bottom .btn-outline-light {
   background: transparent;
   color: var(--kcc-cream);
-  border: 1px solid var(--kcc-cream);
+  border: 1px solid rgba(234, 220, 177, 0.65);
 }
 
 .kcc-hero-bottom .btn-outline-light:hover {
-  background: var(--kcc-gold);
+  background: var(--kcc-cream);
   color: var(--kcc-midnight);
-  border-color: var(--kcc-gold);
   transform: translateY(-3px);
+}
+
+/* Mobile layout */
+@media (max-width: 767px) {
+  .kcc-hero-inner {
+    padding-top: 95px;
+    padding-bottom: 45px;
+  }
+
+  .kcc-hero-artwork {
+    padding: 6px;
+  }
+
+  .kcc-hero-bottom {
+    margin-top: 25px;
+  }
+
+  .kcc-hero-bottom .hero-actions {
+    gap: 12px;
+  }
+
+  .kcc-hero-bottom .hero-actions .btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 20px;
+  }
+}
+/* KCC HERO — DISTINCTIVE IMAGE SHAPE */
+
+.kcc-hero-artwork {
+  padding: 0;
+  border: 1px solid rgba(212, 175, 55, 0.7);
+  border-radius: 80px 8px 80px 8px;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+}
+
+.kcc-hero-artwork img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 78px 6px 78px 6px;
+}
+
+@media (max-width: 767px) {
+  .kcc-hero-artwork {
+    border-radius: 35px 5px 35px 5px;
+  }
+
+  .kcc-hero-artwork img {
+    border-radius: 33px 4px 33px 4px;
+  }
 }
