@@ -1452,3 +1452,117 @@ body.scrolled .header {
         transition: none !important;
     }
 }
+/* =========================================
+   KCC HERO — ANIMATED PRESENTATION
+========================================= */
+
+#hero.kcc-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Soft gold ambient glow */
+#hero.kcc-hero::before {
+  content: "";
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.13) 0%,
+    rgba(212, 175, 55, 0.04) 45%,
+    transparent 72%
+  );
+  filter: blur(25px);
+  pointer-events: none;
+  z-index: -1;
+  animation: kccGlow 5s ease-in-out infinite alternate;
+}
+
+/* Logo artwork */
+.kcc-hero-artwork {
+  position: relative;
+  z-index: 1;
+  animation: kccLogoReveal 1.2s ease-out both;
+  will-change: transform, opacity;
+}
+
+.kcc-hero-artwork img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Buttons */
+.kcc-hero-bottom {
+  position: relative;
+  z-index: 2;
+  animation: kccButtonsReveal 1s ease-out 0.7s both;
+}
+
+.kcc-hero-bottom .hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Animations */
+@keyframes kccLogoReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes kccButtonsReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes kccGlow {
+  from {
+    opacity: 0.55;
+    transform: translateX(-50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.12);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  #hero.kcc-hero::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .kcc-hero-bottom .hero-actions {
+    gap: 12px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  #hero.kcc-hero::before,
+  .kcc-hero-artwork,
+  .kcc-hero-bottom {
+    animation: none !important;
+  }
+}
